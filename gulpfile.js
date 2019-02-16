@@ -2,7 +2,7 @@
  * @Author: ZXY 
  * @Date: 2019-02-16 09:01:35 
  * @Last Modified by: ZXY
- * @Last Modified time: 2019-02-16 09:21:18
+ * @Last Modified time: 2019-02-16 09:48:11
  */
 
 var gulp = require('gulp'),
@@ -10,7 +10,8 @@ var gulp = require('gulp'),
     minCss = require('gulp-clean-css'),
     minJs = require('gulp-uglify'),
     babel = require('gulp-babel'),
-    server = require('gulp-webserver');
+    server = require('gulp-webserver'),
+    concat = require('gulp-concat');
 
 
 //起服务
@@ -36,6 +37,7 @@ gulp.task('devJs', function() {
         .pipe(babel({
             presets: ['@babel/env']
         }))
+        .pipe(concat('all.js'))
         .pipe(minJs())
         .pipe(gulp.dest('./dist/js'))
 });
